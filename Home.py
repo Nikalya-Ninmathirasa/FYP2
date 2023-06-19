@@ -47,6 +47,7 @@ with tab1:
 
             # Save the data to the session state
             if 'data' not in st.session_state:
+
     # st.session_state['data'] = pd.DataFrame()
                 st.session_state['data'] = data
             col1.write("## Trends Data")
@@ -85,4 +86,4 @@ with tab3:
     # col3.write(st.session_state['data'])
 
 with tab4:
-    # st.write(st.session_state['data'])
+    st.write("st.session_state['data']")
