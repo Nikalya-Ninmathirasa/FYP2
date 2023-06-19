@@ -23,64 +23,72 @@ tab1, tab2, tab3, tab4 = st.tabs(["Search Query Data Analytics and Forecasting",
 with st.expander("data"):
     col1, col2, col3 =  st.columns(3)
 
-with tab1:
+
+
+#####################   tab1 #@######################################################
+
+# with tab1:
     # Create a for keyword selection
-    selected_keywords = st.multiselect('Select existing keywords', initial_keywords)
+selected_keywords = tab1.multiselect('Select existing keywords', initial_keywords)
 
-    # Allow additional keywords to be added
-    additional_keyword = st.text_input("Add a new keyword")
-    if additional_keyword:
-        selected_keywords.append(additional_keyword)
 
-    # When keywords are selected, fetch data from Google Trends and display it
-    if st.button('Fetch Google Trends data for selected keywords'):
-        # Define the payload
-        kw_list = selected_keywords
+# When keywords are selected, fetch data from Google Trends and display it
+if tab1.button('Fetch Google Trends data for selected keywords'):
+    # Define the payload
+    kw_list = selected_keywords
 
-        # Get Google Trends data
-        pytrends.build_payload(kw_list, timeframe='today 5-y')
+    # Get Google Trends data
+    pytrends.build_payload(kw_list, timeframe='today 5-y')
 
-        # Get interest over time
-        data = pytrends.interest_over_time()
-        if not data.empty:
-            data = data.drop(labels=['isPartial'],axis='columns')
+    # Get interest over time
+    data = pytrends.interest_over_time()
+    if not data.empty:
+        data = data.drop(labels=['isPartial'],axis='columns')
 
-            # Save the data to the session state
-            if 'data' not in st.session_state:
+        # Save the data to the session state
+        if 'data' not in st.session_state:
 
-    # st.session_state['data'] = pd.DataFrame()
-                st.session_state['data'] = data
-    if 'data' in st.session_state:
-        col1.write("## Trends Data")
+# st.session_state['data'] = pd.DataFrame()
+            st.session_state['data'] = data
+if 'data' in st.session_state:
+    col1.write("## Trends Data")
 
-        col1.write(st.session_state['data'])
+    col1.write(st.session_state['data'])
 
-with tab2:
+
+
+
+
+
+
+#####################   tab1 #@######################################################
+
+# with tab2:
     # Upload file
-    uploaded_file = st.file_uploader("Upload scraped data for reviews")
-    if uploaded_file is not None:
-        st.session_state['data2'] = pd.read_csv(uploaded_file)
-        
-
-        col2.write("## Sentimental Data")
-        
-        col2.write(st.session_state['data2'])
+uploaded_file = tab2.file_uploader("Upload scraped data for reviews")
+if uploaded_file is not None:
+    st.session_state['data2'] = pd.read_csv(uploaded_file)
+    col2.write("## Sentimental Data")
+    col2.write(st.session_state['data2'])
     
-    # # Assuming that sentiments are calculated on a 'text' column in the dataframe
-    # if 'text' in st.session_state['data'].columns:
-    #     st.session_state['data']['sentiment'] = st.session_state['data']['text'].apply(lambda x: TextBlob(x).sentiment.polarity)
-    # st.write(st.session_state['data'])
 
-with tab3:
+
+
+#####################   tab1 #@######################################################
+
+# with tab3:
     # Upload file
-    uploaded_file2 = st.file_uploader("Upload scraped data for prices")
-    if uploaded_file2 is not None:
-        st.session_state['data3'] = pd.read_csv(uploaded_file2)
-        
-        col3.write("## Pricing Data")
-        
-        col3.write(st.session_state['data3'])
+uploaded_file2 = tab3.file_uploader("Upload scraped data for prices")
+if uploaded_file2 is not None:
+    st.session_state['data3'] = pd.read_csv(uploaded_file2)
+    
+    col3.write("## Pricing Data")
+    
+    col3.write(st.session_state['data3'])
     
   
-with tab4:
-    st.write("st.session_state['data']")
+# with tab4:
+tab4.write("Chat Bot")
+tab4.text_input("Ask question")
+tab4.button("submit answer")
+
