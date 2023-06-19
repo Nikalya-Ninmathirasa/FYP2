@@ -20,7 +20,9 @@ if 'data3' not in st.session_state:
     st.session_state['data3'] = pd.DataFrame()
 
 tab1, tab2, tab3, tab4 = st.tabs(["Search Query Data Analytics and Forecasting", "Sentimental Analysis", "Price Optimization", "Chatbot"])
-col1, col2, col3 =  st.columns(3)
+
+with st.expander("data"):
+    col1, col2, col3 =  st.columns(3)
 
 with tab1:
     # Create a for keyword selection
