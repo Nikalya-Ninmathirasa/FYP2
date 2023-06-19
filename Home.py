@@ -1,7 +1,7 @@
 import streamlit as st
 from pytrends.request import TrendReq
 import pandas as pd
-from textblob import TextBlob
+# from textblob import TextBlob
 
 # Initialize pytrends
 pytrends = TrendReq(hl='en-US', tz=360)
