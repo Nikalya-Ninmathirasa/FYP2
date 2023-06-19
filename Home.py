@@ -1,7 +1,7 @@
 import streamlit as st
 from pytrends.request import TrendReq
 import pandas as pd
-# from textblob import TextBlob
+from textblob import TextBlob
 
 # Initialize pytrends
 pytrends = TrendReq(hl='en-US', tz=360)
@@ -12,6 +12,12 @@ initial_keywords = ['Galle Tourism', 'Galle', 'Hotels Galle', 'Resorts Galle Sri
 # Initialize session state
 if 'data' not in st.session_state:
     st.session_state['data'] = pd.DataFrame()
+
+if 'data2' not in st.session_state:
+    st.session_state['data2'] = pd.DataFrame()
+
+if 'data3' not in st.session_state:
+    st.session_state['data3'] = pd.DataFrame()
 
 tab1, tab2, tab3, tab4 = st.tabs(["Search Query Data Analytics and Forecasting", "Sentimental Analysis", "Price Optimization", "Chatbot"])
 
@@ -43,13 +49,27 @@ with tab1:
             st.write(data)
 
 with tab2:
+    # Upload file
+    uploaded_file = st.file_uploader("Choose a file")
+    if uploaded_file is not None:
+        st.session_state['data2'] = pd.read_csv(uploaded_file)
+        st.write(st.session_state['data2'])
+    
     # Assuming that sentiments are calculated on a 'text' column in the dataframe
-    # st.session_state['data']['sentiment'] = st.session_state['data']['text'].apply(lambda x: TextBlob(x).sentiment.polarity)
+    if 'text' in st.session_state['data'].columns:
+        st.session_state['data']['sentiment'] = st.session_state['data']['text'].apply(lambda x: TextBlob(x).sentiment.polarity)
     st.write(st.session_state['data'])
 
 with tab3:
+    # Upload file
+    uploaded_file2 = st.file_uploader("Choose a file")
+    if uploaded_file2 is not None:
+        st.session_state['data3'] = pd.read_csv(uploaded_file2)
+        st.write(st.session_state['data3'])
+    
     # Dummy example of adding a price column
-    # st.session_state['data']['price'] = st.session_state['data']['sentiment'] * 100  # Modify this as per your logic
+    if 'sentiment' in st.session_state['data'].columns:
+        st.session_state['data']['price'] = st.session_state['data']['sentiment'] * 100  # Modify this as per your logic
     st.write(st.session_state['data'])
 
 with tab4:
