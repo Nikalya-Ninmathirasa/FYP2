@@ -20,6 +20,7 @@ if 'data3' not in st.session_state:
     st.session_state['data3'] = pd.DataFrame()
 
 tab1, tab2, tab3, tab4 = st.tabs(["Search Query Data Analytics and Forecasting", "Sentimental Analysis", "Price Optimization", "Chatbot"])
+col1, col2, col3 =  st.columns(3)
 
 with tab1:
     # Create a for keyword selection
@@ -46,31 +47,31 @@ with tab1:
             # Save the data to the session state
             st.session_state['data'] = data
 
-            st.write(data)
+            col1.write(data)
 
 with tab2:
     # Upload file
     uploaded_file = st.file_uploader("Upload scraped data for reviews")
     if uploaded_file is not None:
         st.session_state['data2'] = pd.read_csv(uploaded_file)
-        st.write(st.session_state['data2'])
+        col2.write(st.session_state['data2'])
     
-    # Assuming that sentiments are calculated on a 'text' column in the dataframe
-    if 'text' in st.session_state['data'].columns:
-        st.session_state['data']['sentiment'] = st.session_state['data']['text'].apply(lambda x: TextBlob(x).sentiment.polarity)
-    st.write(st.session_state['data'])
+    # # Assuming that sentiments are calculated on a 'text' column in the dataframe
+    # if 'text' in st.session_state['data'].columns:
+    #     st.session_state['data']['sentiment'] = st.session_state['data']['text'].apply(lambda x: TextBlob(x).sentiment.polarity)
+    # st.write(st.session_state['data'])
 
 with tab3:
     # Upload file
     uploaded_file2 = st.file_uploader("Upload scraped data for prices")
     if uploaded_file2 is not None:
         st.session_state['data3'] = pd.read_csv(uploaded_file2)
-        st.write(st.session_state['data3'])
+        col3.write(st.session_state['data3'])
     
-    # Dummy example of adding a price column
-    if 'sentiment' in st.session_state['data'].columns:
-        st.session_state['data']['price'] = st.session_state['data']['sentiment'] * 100  # Modify this as per your logic
-    st.write(st.session_state['data'])
+    # # Dummy example of adding a price column
+    # if 'sentiment' in st.session_state['data'].columns:
+    #     st.session_state['data']['price'] = st.session_state['data']['sentiment'] * 100  # Modify this as per your logic
+    # col3.write(st.session_state['data'])
 
 with tab4:
     st.write(st.session_state['data'])
