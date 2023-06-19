@@ -1,0 +1,8 @@
+streamlit
+openai
+googlesearch-python
+llama-index
+pytrends 
+pandas
+pandasai
+scipy
