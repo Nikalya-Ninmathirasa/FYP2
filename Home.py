@@ -157,7 +157,7 @@ if tab4.button('Save data and create index'):
         st.success('Data3 saved successfully in data/data3.csv')
 
     documents = SimpleDirectoryReader('data').load_data()
-    index = VectorStoreIndex.from_documents(documents)
+    index = GPTVectorStoreIndex.from_documents(documents)
     query_engine = index.as_query_engine()
     if "query_engine" not in st.session_state:
         st.session_state.query_engine = query_engine
