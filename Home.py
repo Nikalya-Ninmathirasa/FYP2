@@ -4,9 +4,6 @@ from llama_index import download_loader
 from pandasai.llm.openai import OpenAI
 
 # Initialize the AI
-llm = OpenAI()
-PandasAIReader = download_loader("PandasAIReader")
-loader = PandasAIReader(llm=llm)
 
 # Create a dropdown menu
 option = st.selectbox(
@@ -14,6 +11,11 @@ option = st.selectbox(
     ("Price Optimization", "Search Query Analytics and Demand Forecasting", 
     "Sentimental Analysis", "Customized and Personalized Chatbot")
 )
+
+
+llm = OpenAI()
+PandasAIReader = download_loader("PandasAIReader")
+loader = PandasAIReader(llm=llm)
 
 st.subheader(option)
 
