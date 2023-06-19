@@ -10,8 +10,7 @@ pytrends = TrendReq(hl='en-US', tz=360)
 initial_keywords = ['Galle Tourism', 'Galle', 'Hotels Galle', 'Resorts Galle Srilanka','Srilanka', 'Tourist', 'locations']
 
 # Initialize session state
-if 'data' not in st.session_state:
-    st.session_state['data'] = pd.DataFrame()
+
 
 if 'data2' not in st.session_state:
     st.session_state['data2'] = pd.DataFrame()
@@ -47,7 +46,9 @@ with tab1:
             data = data.drop(labels=['isPartial'],axis='columns')
 
             # Save the data to the session state
-            st.session_state['data'] = data
+            if 'data' not in st.session_state:
+    # st.session_state['data'] = pd.DataFrame()
+                st.session_state['data'] = data
             col1.write("## Trends Data")
 
             col1.write(st.session_state['data'])
