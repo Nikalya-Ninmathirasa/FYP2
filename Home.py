@@ -50,7 +50,7 @@ with tab1:
 
 with tab2:
     # Upload file
-    uploaded_file = st.file_uploader("Choose a file")
+    uploaded_file = st.file_uploader("Upload scraped data for reviews")
     if uploaded_file is not None:
         st.session_state['data2'] = pd.read_csv(uploaded_file)
         st.write(st.session_state['data2'])
@@ -62,7 +62,7 @@ with tab2:
 
 with tab3:
     # Upload file
-    uploaded_file2 = st.file_uploader("Choose a file")
+    uploaded_file2 = st.file_uploader("Upload scraped data for prices")
     if uploaded_file2 is not None:
         st.session_state['data3'] = pd.read_csv(uploaded_file2)
         st.write(st.session_state['data3'])
