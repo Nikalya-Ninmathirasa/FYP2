@@ -50,9 +50,9 @@ with tab1:
 
     # st.session_state['data'] = pd.DataFrame()
                 st.session_state['data'] = data
-            col1.write("## Trends Data")
+    col1.write("## Trends Data")
 
-            col1.write(st.session_state['data'])
+    col1.write(st.session_state['data'])
 
 with tab2:
     # Upload file
@@ -80,10 +80,6 @@ with tab3:
         
         col3.write(st.session_state['data3'])
     
-    # # Dummy example of adding a price column
-    # if 'sentiment' in st.session_state['data'].columns:
-    #     st.session_state['data']['price'] = st.session_state['data']['sentiment'] * 100  # Modify this as per your logic
-    # col3.write(st.session_state['data'])
-
+  
 with tab4:
     st.write("st.session_state['data']")
