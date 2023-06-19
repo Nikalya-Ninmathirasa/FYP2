@@ -2,6 +2,19 @@ import streamlit as st
 from pytrends.request import TrendReq
 import pandas as pd
 from textblob import TextBlob
+
+
+from llama_index import (
+    GPTVectorStoreIndex, Document, SimpleDirectoryReader,
+    QuestionAnswerPrompt, LLMPredictor, ServiceContext
+)
+import json
+from langchain import OpenAI
+from llama_index.retrievers import VectorIndexRetriever
+from llama_index.query_engine import RetrieverQueryEngine
+
+
+
 st.set_page_config(page_title=None, page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
 # Initialize pytrends
 pytrends = TrendReq(hl='en-US', tz=360)
@@ -123,7 +136,38 @@ with tab4.expander("Nikalya"):
     st.write("https://colab.research.google.com/drive/1erptkpWML8o3lWfxfQ1NQZw9hXNatrP8?usp=sharing")
 
 
+
+
+if tab4.button('Save data and create index'):
+    # Check if the 'data' directory exists
+    if not os.path.exists('data'):
+        os.makedirs('data')
+
+    # Save the data from session state to CSV files
+    if 'data' in st.session_state:
+        st.session_state['data'].to_csv('data/data.csv')
+        st.success('Data saved successfully in data/data.csv')
+
+    if not st.session_state['data2'].empty:
+        st.session_state['data2'].to_csv('data/data2.csv')
+        st.success('Data2 saved successfully in data/data2.csv')
+
+    if not st.session_state['data3'].empty:
+        st.session_state['data3'].to_csv('data/data3.csv')
+        st.success('Data3 saved successfully in data/data3.csv')
+
+    documents = SimpleDirectoryReader('data').load_data()
+    index = VectorStoreIndex.from_documents(documents)
+    query_engine = index.as_query_engine()
+    if "query_engine" not in st.session_state:
+        st.session_state.query_engine = query_engine
+
 tab4.write("Chat Bot")
-tab4.text_input("Ask question")
-tab4.button("submit answer")
+ques = tab4.text_input("Ask question")
+ask = tab4.button("submit answer")
+
+if ask:
+    response = st.session_state.query_engine.query(ques)
+    st.write(response) 
+
 
