@@ -85,4 +85,4 @@ with tab3:
     # col3.write(st.session_state['data'])
 
 with tab4:
-    st.write(st.session_state['data'])
+    # st.write(st.session_state['data'])
