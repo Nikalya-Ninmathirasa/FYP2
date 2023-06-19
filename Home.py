@@ -50,9 +50,10 @@ with tab1:
 
     # st.session_state['data'] = pd.DataFrame()
                 st.session_state['data'] = data
-    col1.write("## Trends Data")
+    if 'data' in st.session_state:
+        col1.write("## Trends Data")
 
-    col1.write(st.session_state['data'])
+        col1.write(st.session_state['data'])
 
 with tab2:
     # Upload file
