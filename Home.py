@@ -1,51 +1,56 @@
 import streamlit as st
-from pathlib import Path
-from llama_index import download_loader
-from pandasai.llm.openai import OpenAI
+from pytrends.request import TrendReq
+import pandas as pd
+from textblob import TextBlob
 
-# Initialize the AI
+# Initialize pytrends
+pytrends = TrendReq(hl='en-US', tz=360)
 
-# Create a dropdown menu
-option = st.selectbox(
-    "Choose an option",
-    ("Price Optimization", "Search Query Analytics and Demand Forecasting", 
-    "Sentimental Analysis", "Customized and Personalized Chatbot")
-)
+# List of initial keywords
+initial_keywords = ['Galle Tourism', 'Galle', 'Hotels Galle', 'Resorts Galle Srilanka','Srilanka', 'Tourist', 'locations']
 
+# Initialize session state
+if 'data' not in st.session_state:
+    st.session_state['data'] = pd.DataFrame()
 
-llm = OpenAI()
-PandasAIReader = download_loader("PandasAIReader")
-loader = PandasAIReader(llm=llm)
+tab1, tab2, tab3, tab4 = st.tabs(["Search Query Data Analytics and Forecasting", "Sentimental Analysis", "Price Optimization", "Chatbot"])
 
-st.subheader(option)
+with tab1:
+    # Create a for keyword selection
+    selected_keywords = st.multiselect('Select existing keywords', initial_keywords)
 
-if option in ["Price Optimization", "Sentimental Analysis", "Customized and Personalized Chatbot"]:
-    uploaded_file = st.file_uploader("Upload CSV", type=['csv'])
+    # Allow additional keywords to be added
+    additional_keyword = st.text_input("Add a new keyword")
+    if additional_keyword:
+        selected_keywords.append(additional_keyword)
 
-    if uploaded_file is not None:
-        # Convert the uploaded file to a BytesIO object and read it into a pandas DataFrame
-        import io
-        import pandas as pd
-        llm = OpenAI()
-        PandasAIReader = download_loader("PandasAIReader")
-        loader = PandasAIReader(llm=llm)
-        df = pd.read_csv(io.BytesIO(uploaded_file.read()))
+    # When keywords are selected, fetch data from Google Trends and display it
+    if st.button('Fetch Google Trends data for selected keywords'):
+        # Define the payload
+        kw_list = selected_keywords
 
-        # Display the DataFrame
-        st.write(df)
+        # Get Google Trends data
+        pytrends.build_payload(kw_list, timeframe='today 5-y')
 
-        # Get a question from the user
-        query = st.text_input("Enter your question")
+        # Get interest over time
+        data = pytrends.interest_over_time()
+        if not data.empty:
+            data = data.drop(labels=['isPartial'],axis='columns')
 
-        if query:
-            response = loader.run_pandas_ai(df, query, is_conversational_answer=True)
-            st.write(response)
+            # Save the data to the session state
+            st.session_state['data'] = data
 
-elif option == "Search Query Analytics and Demand Forecasting":
-    # Input field for search query
-    search_query = st.text_input("Enter your search query")
+            st.write(data)
 
-    if search_query:
-        # Placeholder for function to process the search query
-        response = process_search_query(search_query)
-        st.write(response)
+with tab2:
+    # Assuming that sentiments are calculated on a 'text' column in the dataframe
+    # st.session_state['data']['sentiment'] = st.session_state['data']['text'].apply(lambda x: TextBlob(x).sentiment.polarity)
+    st.write(st.session_state['data'])
+
+with tab3:
+    # Dummy example of adding a price column
+    # st.session_state['data']['price'] = st.session_state['data']['sentiment'] * 100  # Modify this as per your logic
+    st.write(st.session_state['data'])
+
+with tab4:
+    st.write(st.session_state['data'])
