@@ -26,6 +26,9 @@ if option in ["Price Optimization", "Sentimental Analysis", "Customized and Pers
         # Convert the uploaded file to a BytesIO object and read it into a pandas DataFrame
         import io
         import pandas as pd
+        llm = OpenAI()
+        PandasAIReader = download_loader("PandasAIReader")
+        loader = PandasAIReader(llm=llm)
         df = pd.read_csv(io.BytesIO(uploaded_file.read()))
 
         # Display the DataFrame
