@@ -2,7 +2,7 @@ import streamlit as st
 from pytrends.request import TrendReq
 import pandas as pd
 from textblob import TextBlob
-
+st.set_page_config(page_title=None, page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
 # Initialize pytrends
 pytrends = TrendReq(hl='en-US', tz=360)
 
