@@ -46,6 +46,7 @@ with tab1:
 
             # Save the data to the session state
             st.session_state['data'] = data
+            col1.write("## Trends Data")
 
             col1.write(st.session_state['data'])
 
