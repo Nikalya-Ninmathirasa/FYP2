@@ -55,6 +55,10 @@ with tab2:
     uploaded_file = st.file_uploader("Upload scraped data for reviews")
     if uploaded_file is not None:
         st.session_state['data2'] = pd.read_csv(uploaded_file)
+        
+
+        col2.write("## Sentimental Data")
+        
         col2.write(st.session_state['data2'])
     
     # # Assuming that sentiments are calculated on a 'text' column in the dataframe
@@ -67,6 +71,9 @@ with tab3:
     uploaded_file2 = st.file_uploader("Upload scraped data for prices")
     if uploaded_file2 is not None:
         st.session_state['data3'] = pd.read_csv(uploaded_file2)
+        
+        col3.write("## Pricing Data")
+        
         col3.write(st.session_state['data3'])
     
     # # Dummy example of adding a price column
