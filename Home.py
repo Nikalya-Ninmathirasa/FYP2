@@ -83,12 +83,12 @@ if 'data' in st.session_state:
 
 
 
-#####################   tab1 #@######################################################
+#####################   tab2 #@######################################################
 
 # with tab2:
     # Upload file
 
-with tab1.expander("Sinthuja"):
+with tab2.expander("Sinthuja"):
     st.write("#### Novel Contribution")
     st.write("My study introduces a novel use of deep learning for the detection of sarcasm and sentiment analysis in reviews. We leverage a custom-designed architecture that integrates the BERT transformer-based deep learning model, which offers improved context understanding and semantic interpretation. This unique approach provides a more precise and nuanced text analysis, marking a significant advancement in the field..")
     st.write("#### Implementation link")
