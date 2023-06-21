@@ -113,7 +113,7 @@ with tab3.expander("Gobinthiran"):
     st.write("#### Novel Contribution")
     st.write("My research presents a novel contribution to the field of price forecasting by leveraging the power of Deep Learning. The groundbreaking approach employs the Prophet model, a tool traditionally reserved for time series forecasting, but in this context, is used to predict price movements. However, what truly sets this research apart is the subsequent optimization of these forecasts using a custom architecture based on Convolutional Neural Networks (CNNs) and Long Short-Term Memory (LSTM) models. This unique blend of advanced methodologies provides a new perspective on price forecasting, opening doors for further innovative applications and research in the financial and economic sectors.")
     st.write("#### Implementation link")
-    st.write("https://colab.research.google.com/drive/1erptkpWML8o3lWfxfQ1NQZw9hXNatrP8?usp=sharing")
+    st.write("https://colab.research.google.com/drive/148ZqLfM572uF_ydqYAoX1gGqNqcomyU3?usp=sharing")
 
 
 uploaded_file2 = tab3.file_uploader("Upload scraped data for prices")
