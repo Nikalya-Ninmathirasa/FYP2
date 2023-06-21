@@ -168,6 +168,6 @@ ask = tab4.button("submit answer")
 
 if ask:
     response = st.session_state.query_engine.query(ques)
-    st.write(response) 
+    st.write(response.response) 
 
 
