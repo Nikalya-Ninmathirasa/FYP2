@@ -24,7 +24,7 @@ st.markdown(
     .center {
         display: flex;
         justify-content: center;
-        height:70px;
+        height:150px;
     }
     </style>
     """,
