@@ -137,7 +137,7 @@ if tab4.button('Save data and create index'):
 # tab4.write("Chat Bot")
 
 with tab4:
-    st.markdown('<p style="font-size:30px; color:navy">Chat Bot</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:37px; color:navy">Chat Bot</p>', unsafe_allow_html=True)
 
 ques = tab4.text_input("Ask question")
 ask = tab4.button("submit question")
