@@ -16,6 +16,9 @@ from llama_index.query_engine import RetrieverQueryEngine
 
 
 st.set_page_config(page_title=None, page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
+
+st.markdown('<p style="font-size:30px; color:red; text-align:center;">Chatbot for helping Hotel marketers for promoting their businesses in Galle District</p>', unsafe_allow_html=True)
+
 # Initialize pytrends
 pytrends = TrendReq(hl='en-US', tz=360)
 
