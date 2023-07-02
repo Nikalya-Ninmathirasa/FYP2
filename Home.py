@@ -144,6 +144,9 @@ ask = tab4.button("submit question")
 
 if ask:
     response = st.session_state.query_engine.query(ques)
-    st.write(response.response) 
+    if response is None:
+        st.write("Please provide more details about the question.")
+    else:
+        st.write(response.response)
 
 
