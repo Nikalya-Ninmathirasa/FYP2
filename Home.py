@@ -32,7 +32,7 @@ st.markdown(
 )
 
 # Add the image with center alignment
-st.markdown('<div class="center"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNmbbuVqoA2mtNcl9VEKVXXoS4ZxXuI4y4CQ&usqp=CAU" alt="Image" width="150"></div>', unsafe_allow_html=True)
+st.markdown('<div class="center"><img src="https://media.istockphoto.com/id/1060696342/vector/robot-icon-chat-bot-sign-for-support-service-concept-chatbot-character-flat-style.jpg?s=612x612&w=0&k=20&c=t9PsSDLowOAhfL1v683JMtWRDdF8w5CFsICqQvEvfzY=" alt="Image" width="150"></div>', unsafe_allow_html=True)
 
 # page heading
 st.markdown('<p style="font-size:40px; color:navy; text-align:center;">Understand the Galle Tourism Market with Guide_Bot</p> <br>', unsafe_allow_html=True)
