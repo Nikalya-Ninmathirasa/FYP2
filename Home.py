@@ -17,6 +17,23 @@ from llama_index.query_engine import RetrieverQueryEngine
 
 st.set_page_config(page_title=None, page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
 
+#image
+st.markdown(
+    """
+    <style>
+    .center {
+        display: flex;
+        justify-content: center;
+        height:70px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Add the image with center alignment
+st.markdown('<div class="center"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNmbbuVqoA2mtNcl9VEKVXXoS4ZxXuI4y4CQ&usqp=CAU" alt="Image" width="150"></div>', unsafe_allow_html=True)
+
 # page heading
 st.markdown('<p style="font-size:40px; color:navy; text-align:center;">Understand the Galle Tourism Market with Guide_Bot</p> <br>', unsafe_allow_html=True)
 
