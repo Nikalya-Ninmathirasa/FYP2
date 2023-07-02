@@ -20,7 +20,7 @@ st.set_page_config(page_title=None, page_icon=None, layout="wide", initial_sideb
 pytrends = TrendReq(hl='en-US', tz=360)
 
 # List of initial keywords
-initial_keywords = ['Galle Tourism', 'Galle', 'Hotels Galle', 'Resorts Galle ','Koggala Beach Hotels', 'Unawatuna Beach Hotels ', 'Galle Restaurants, Bentota Hotels']
+initial_keywords = ['Galle Tourism', 'Galle', 'Hotels Galle', 'Resorts Galle ','Koggala Beach Hotels', 'Unawatuna Beach Hotels ', 'Galle Restaurants', 'Bentota Hotels']
 
 # Initialize session state
 
