@@ -17,7 +17,11 @@ from llama_index.query_engine import RetrieverQueryEngine
 
 st.set_page_config(page_title=None, page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
 
+# page heading
 st.markdown('<p style="font-size:40px; color:gray; text-align:center;">Understand the Galle Tourism Market with Guide_Bot</p>', unsafe_allow_html=True)
+
+# Add an empty line for spacing
+st.markdown("<br><br>")
 
 # Initialize pytrends
 pytrends = TrendReq(hl='en-US', tz=360)
