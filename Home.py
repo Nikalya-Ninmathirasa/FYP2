@@ -18,7 +18,7 @@ from llama_index.query_engine import RetrieverQueryEngine
 st.set_page_config(page_title=None, page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
 
 # page heading
-st.markdown('<p style="font-size:40px; color:gray; text-align:center;">Understand the Galle Tourism Market with Guide_Bot</p> <br><br>', unsafe_allow_html=True)
+st.markdown('<p style="font-size:40px; color:dark blue; text-align:center;">Understand the Galle Tourism Market with Guide_Bot</p> <br><br>', unsafe_allow_html=True)
 
 # Initialize pytrends
 pytrends = TrendReq(hl='en-US', tz=360)
@@ -36,11 +36,6 @@ if 'data3' not in st.session_state:
     st.session_state['data3'] = pd.DataFrame()
 
 tab1, tab2, tab3, tab4 = st.tabs(["Search Query Data Analytics and Forecasting", "Sentimental Analysis", "Price Optimization", "Chatbot"])
-
-# Customize the "Chatbot" tab
-with tab4:
-    st.markdown("<p style='color:dark blue;font-size:20px;'>Content for the Chatbot tab</p>", unsafe_allow_html=True)
-
 
 with st.expander("data"):
     col1, col2, col3 =  st.columns(3)
@@ -140,6 +135,10 @@ if tab4.button('Save data and create index'):
         st.session_state.query_engine = query_engine
 
 tab4.write("Chat Bot")
+
+with tab4:
+    st.markdown('<p style="font-size:3opx; text-align:center; color:dark blue">Chat Bot</p>', unsafe_allow_html=True)
+
 ques = tab4.text_input("Ask question")
 ask = tab4.button("submit question")
 
