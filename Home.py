@@ -41,7 +41,7 @@ st.markdown('<p style="font-size:40px; color:navy; text-align:center;">Understan
 pytrends = TrendReq(hl='en-US', tz=360)
 
 # List of initial keywords
-initial_keywords = ['Galle Tourism', 'Galle', 'Hotels Galle', 'Resorts Galle ','Koggala Beach Hotels', 'Unawatuna Beach Hotels ', 'Galle Restaurants', 'Bentota Hotels']
+initial_keywords = ['Galle', 'Hotels Galle', 'Resorts Galle ','Koggala Beach Hotels', 'Unawatuna Beach Hotels ','Hikaduwa beach',  'Galle Restaurants', 'Bentota Hotels']
 
 # Initialize session state
 
